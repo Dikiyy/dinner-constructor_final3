@@ -14,17 +14,15 @@ public class Main {
 
         while (true) {
             printMenu();
-            String command = scanner.nextLine();
-
+            String command = scanner.nextLine().trim();
             switch (command) {
-                case "1":
-                    addNewDish();
-                    break;
-                case "2":
-                    generateDishCombo();
-                    break;
-                case "3":
-                    return;
+                case "1" -> addNewDish();
+                case "2" -> generateDishCombo();
+                case "3" -> System.out.println("Программа завершена. \nСпасибо за использование");
+                default -> {
+                    System.out.println("Такой команды нет.");
+//                    throw new RuntimeException("Программа завершена"); //Should we throw exception here?
+                }
             }
         }
     }
@@ -38,9 +36,9 @@ public class Main {
 
     private static void addNewDish() {
         System.out.println("Введите тип блюда:");
-        String dishType = scanner.nextLine();
+        String dishType = scanner.nextLine().trim();
         System.out.println("Введите название блюда:");
-        String dishName = scanner.nextLine();
+        String dishName = scanner.nextLine().trim();
 
         dinnerConstructor.addNewDish(dishType, dishName);
     }
@@ -53,7 +51,7 @@ public class Main {
         scanner.nextLine();
 
         System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
-        String nextItem = scanner.nextLine();
+        String nextItem = scanner.nextLine().trim();
 
         //реализуйте ввод типов блюд
         ArrayList<String> selectedTypes = new ArrayList<>();
@@ -65,7 +63,6 @@ public class Main {
             }
             nextItem = scanner.nextLine();
         }
-
 
         ArrayList<String> generatedCombos = dinnerConstructor.generateCombos(numberOfCombos, selectedTypes);
         for (int i = 0; i < numberOfCombos; i++) {

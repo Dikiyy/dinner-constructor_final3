@@ -17,7 +17,6 @@ public class DinnerConstructor {
         } else {
             dishesForType = new ArrayList<>();
             dinnersByType.put(dishType, dishesForType);
-            е
         }
 
         dishesForType.add(dishName);
@@ -25,8 +24,9 @@ public class DinnerConstructor {
 
     public ArrayList<String> generateCombos(int comboNumber, ArrayList<String> dishTypes) {
         ArrayList<String> combos = new ArrayList<>();
+        String combo;
         for (int i = 0; i <= comboNumber; i++) {
-            String combo = generateCombo(dishTypes);
+            combo = generateCombo(dishTypes);
             combos.add(combo);
         }
         return combos;
@@ -40,8 +40,9 @@ public class DinnerConstructor {
 
     private String generateCombo(ArrayList<String> dishTypes) {
         ArrayList<String> selectedDishes = new ArrayList<>();
+        ArrayList<String> availableDishes;
         for (String dishType : dishTypes) {
-            ArrayList<String> availableDishes = dinnersByType.get(dishType);
+            availableDishes = dinnersByType.get(dishType);
             String selectedDish = getRandomDish(availableDishes);
             selectedDishes.add(selectedDish);
         }

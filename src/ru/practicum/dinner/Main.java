@@ -19,10 +19,7 @@ public class Main {
                 case "1" -> addNewDish();
                 case "2" -> generateDishCombo();
                 case "3" -> System.out.println("Программа завершена. \nСпасибо за использование");
-                default -> {
-                    System.out.println("Такой команды нет.");
-//                    throw new RuntimeException("Программа завершена"); //Should we throw exception here?
-                }
+                default -> System.out.println("Такой команды нет."); //Should we throw exception here?
             }
         }
     }
@@ -44,8 +41,11 @@ public class Main {
     }
 
     private static void generateDishCombo() {
+        // Check if in out HashMap are some dished and categories to cunstruct smth.
+        if (dinnerConstructor.isMenuEmpty()) {
+            return;
+        }
         System.out.println("Начинаем конструировать обед...");
-
         System.out.println("Введите количество наборов, которые нужно сгенерировать:");
         int numberOfCombos = scanner.nextInt();
         scanner.nextLine();

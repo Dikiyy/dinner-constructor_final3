@@ -32,6 +32,15 @@ public class DinnerConstructor {
         return combos;
     }
 
+    public boolean isMenuEmpty(){
+        if (dinnersByType.isEmpty()){
+            System.out.println("Наше меню не содержит ни одной позиции.");
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     public boolean checkType(String type) {
         return dinnersByType.containsKey(type);

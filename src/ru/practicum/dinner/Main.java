@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class Main {
 
-    static DinnerConstructor dc;
+    static DinnerConstructor dinnerConstructor;
     static Scanner scanner;
 
     public static void main(String[] args) {
-        dc = new DinnerConstructor();
+        dinnerConstructor = new DinnerConstructor();
         scanner = new Scanner(System.in);
 
         while (true) {
@@ -56,21 +56,21 @@ public class Main {
         String nextItem = scanner.nextLine();
 
         //реализуйте ввод типов блюд
-        ??? selectedTypes = new ArrayList<>();
+        ArrayList<String> selectedTypes = new ArrayList<>();
         while (!nextItem.isEmpty()) { //варианты вводит пользователь
-            if (dc.???(nextItem)) { //но вы должны проверить, существуют ли эти блюда в хранилище с помощью метода DinnerConstructor checkType
-                selectedTypes.???(nextItem); //выбранное блюдо добавьте в список вариантов
+            if (dinnerConstructor.checkType(nextItem)) { //но вы должны проверить, существуют ли эти блюда в хранилище с помощью метода DinnerConstructor checkType
+                selectedTypes.add(nextItem); //выбранное блюдо добавьте в список вариантов
             } else {
                 System.out.println("Такой тип блюд мы еще не умеем готовить. Попробуйте что-нибудь другое!");
             }
-            nextItem = scanner.???(); //перейдите к следующему пункту ввода пользователя
+            nextItem = scanner.nextLine(); //перейдите к следующему пункту ввода пользователя
         }
 
         // сгенерируйте комбинации блюд и выведите на экран
-        ??? generatedCombos = ???(numberOfCombos, selectedTypes); //сгенерируйте варианты комбинаций блюд с помощью метода DinnerConstructor generateCombos
-        for (???; i < numberOfCombos; i++) {
+        ArrayList<String> generatedCombos = dinnerConstructor.generateCombos(numberOfCombos, selectedTypes); //сгенерируйте варианты комбинаций блюд с помощью метода DinnerConstructor generateCombos
+        for (int i = 0 ; i < numberOfCombos; i++) {
             System.out.println("Комбинация " + i);
-            System.out.println(generatedCombos.???(???)); //выведите каждый элемент получившейся комбинации
+            System.out.println(generatedCombos.get(i)); //выведите каждый элемент получившейся комбинации
         }
     }
 }

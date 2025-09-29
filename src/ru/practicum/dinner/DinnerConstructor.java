@@ -35,7 +35,7 @@ public class DinnerConstructor {
 
     //метод для проверки дубликатов блюд
     public boolean checkType(String type) {
-        return dinnersByType.containsValue(type); //если хранилище уже содержит такое блюдо - вернём true
+        return dinnersByType.containsKey(type); //если хранилище уже содержит такое блюдо - вернём true
     }
 
     //метод для генерирования одной комбинации блюд
